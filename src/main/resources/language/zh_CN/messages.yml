@@ -1,0 +1,117 @@
+# 聊天消息。{prefix} 与 {placeholder} 占位符由插件自动填充。
+# 支持 MiniMessage 标签（<red>、<#RRGGBB>）或传统 '&' 颜色代码。
+
+prefix: '<#9B59B6>EnhancedEchest <dark_gray>⏩ <reset>'
+
+command:
+  not-player: '{prefix}只有玩家才能使用末影箱。'
+
+chest:
+  load-failed: '{prefix}无法加载你的末影箱，请联系管理员。'
+  not-found: '{prefix}该末影箱已不存在。'
+  # 玩家试图把物品放入临时箱时（在动作栏上）显示。
+  temp-take-only: '<red>这是一个临时箱子，只能取出物品，不能放入。'
+  # 登录提醒。{count} = 等待中的临时箱数量，{time} = 距离最早到期的时间。聊天栏和动作栏同时显示。
+  temp-join-chat: '{prefix}<red>你有 {count} 个临时末影箱中的物品，请在其到期前领取。最早的时间：{time}。'
+  temp-join-actionbar: '<red>临时末影箱中有物品，请在 {time} 内领取！'
+  # 当临时箱中的物品被自动移入新箱子时显示。{chest} = 物品落到的箱子编号。聊天栏和动作栏同时显示。
+  temp-reclaim-chat: '{prefix}<green>你的临时末影箱中的物品已被移入箱子 #{chest}。'
+  temp-reclaim-actionbar: '<green>临时箱子中的物品已被移入箱子 #{chest}。'
+  # 仅 Folia：管理员尝试打开已被他人打开的箱子时。
+  in-use: '{prefix}该末影箱当前正在使用中，请稍后再试。'
+  # 管理员在无编辑权限的情况下查看他人箱子时。
+  view-only: '<gray>只读：你可以查看该箱子，但无法修改其中的物品。'
+  # 点击排序按钮整理完箱子后显示。
+  sorted: '{prefix}箱子已整理。'
+  # 在冷却时间内再次点击排序时显示。{time} = 剩余时间，例如 "2s"。
+  sort-cooldown: '{prefix}请等待 {time} 后再进行排序。'
+  # 因 features.rename-blacklist 而拒绝重命名时。
+  rename-blocked: '{prefix}<red>该名称不允许使用，请另选一个。'
+
+migrate:
+  no-players: '{prefix}没有玩家在线。'
+  complete: '{prefix}迁移完成，已迁移 {migrated} 个，跳过 {skipped} 个已完成。'
+  player-offline: '{prefix}{player} 不在线。'
+  success: '{prefix}成功迁移 {player}。'
+  already-done: '{prefix}{player} 已经迁移过了。'
+  failed: '{prefix}{player} 迁移失败，详情请查看控制台。'
+  # 从其他付费箱子插件导入；{source} 为插件名称（AxVaults、PlayerVaultsX）。
+  no-source: '{prefix}没有找到要导入的 {source} 数据。'
+  started: '{prefix}正在从 {source} 导入箱子，该操作将在后台执行…'
+  import-done: '{prefix}{source} 导入完成。已导入 {players} 名玩家、{vaults} 个箱子，跳过 {skipped} 个，失败 {failed} 个。'
+  import-player-done: '{prefix}{source} 导入 {player}：已导入 {vaults} 个箱子，跳过 {skipped} 个。'
+  import-failed: '{prefix}{source} 导入失败：{error}'
+
+# 数据库到数据库导入（/ee import）：将旧后端复制到当前使用的后端中。
+import:
+  # 运行前对对话框表单的校验。
+  missing-sqlite-file: '{prefix}请输入要导入的 SQLite 数据库文件。'
+  missing-remote-fields: '{prefix}请输入源数据库的主机、数据库名和用户名。'
+  invalid-port: '{prefix}源数据库端口无效。'
+  invalid-type: '{prefix}请选择源数据库类型。'
+  # 前置检查。
+  players-online: '{prefix}只能在没有其他玩家在线时导入，请让其他人离开后再试。'
+  same-database: '{prefix}源数据库与插件当前使用的数据库相同，请改为指向旧后端。'
+  dest-not-empty: '{prefix}当前数据库已有 {count} 个箱子，导入只能写入全新的空数据库。'
+  # 进度与结果。{source} = 所选类型；{players}/{chests} = 复制的记录条数。
+  started: '{prefix}正在从 {source} 数据库导入…该操作将在后台执行。'
+  done: '{prefix}导入完成，已将 {players} 名玩家和 {chests} 个箱子复制到当前数据库。'
+  failed: '{prefix}导入失败，未写入任何数据。原因：{error}'
+
+admin:
+  reload-success: '{prefix}配置已重载。'
+  player-not-found: '{prefix}未找到玩家 {player}。'
+  no-permission: '{prefix}你没有权限执行该操作。'
+  # /ee view 中的管理员"清空箱子"操作。{player} = 所有者，{index} = 箱子编号。
+  chest-cleared: '{prefix}已清空 {player} 的末影箱 {index}。'
+  invalid-size: '{prefix}尺寸必须是 9 到 54 之间且是 9 的倍数。'
+  invalid-duration: '{prefix}无效的时长 "{duration}"。请使用类似 20s、5m、1h、7d 或 1d_2h_30m 的值。'
+  chest-not-found: '{prefix}{player} 没有编号为 {index} 的末影箱。'
+  # 对权限授予的箱子执行 /ee resize。
+  cannot-modify-perm: '{prefix}{player} 的末影箱 {index} 由权限授予，无法修改。'
+  # 对由 enhancedechest.default_size.<size> 权限设定尺寸的基础箱子执行 /ee resize。
+  cannot-modify-default-size: '{prefix}{player} 的末影箱 {index} 由权限设定尺寸，无法调整大小。'
+  # /ee view <player>：目标玩家名下没有任何箱子。
+  view-no-chests: '{prefix}{player} 还没有任何末影箱。'
+  chest-added: '{prefix}已为 {player} 添加 {size} 格的末影箱 {index}。'
+  chest-added-expiring: '{prefix}已为 {player} 添加 {size} 格的末影箱 {index}。它将在 {duration} 后到期。'
+  chests-added: '{prefix}已为 {player} 添加 {count} 个末影箱（{range}），每个 {size} 格。'
+  chests-added-expiring: '{prefix}已为 {player} 添加 {count} 个末影箱（{range}），每个 {size} 格。它们将在 {duration} 后到期。'
+  chest-resized: '{prefix}已将 {player} 的末影箱 {index} 调整为 {size} 格。'
+  # /ee delete：删除最新的箱子。首个箱子始终保留。
+  no-chests-deletable: '{prefix}{player} 只有他们第一个末影箱，该箱子不能删除。'
+  chest-deleted-newest: '{prefix}已删除 {player} 最新的末影箱，其中物品已被丢弃。'
+  chest-deleted-newest-spilled: '{prefix}已删除 {player} 最新的末影箱，其中物品已被移入临时箱。'
+  chests-deleted-newest: '{prefix}已删除 {player} 最新的 {count} 个末影箱，其中物品已被丢弃。'
+  chests-deleted-newest-spilled: '{prefix}已删除 {player} 最新的 {count} 个末影箱，其中物品已被移入临时箱。'
+  # /ee transfer <from> <to> <index|name|all> [override|temp]：将箱子转移到切换后的账户。
+  transfer-usage: '{prefix}用法：/ee transfer <from> <to> <#编号 | 名称 | all> [override | temp]。'
+  transfer-same-player: '{prefix}源玩家与目标玩家不能相同。'
+  transfer-not-found: '{prefix}{player} 没有匹配 "{target}" 的末影箱。'
+  transfer-no-source: '{prefix}{player} 没有可转移的末影箱。'
+  # 目标已有物品，且未给出 override/temp 标志。
+  transfer-needs-flag: '{prefix}{player} 的箱子中已有会被覆盖的物品。请添加 "override" 丢弃它们，或 "temp" 将它们移入临时存储。'
+  transfer-failed: '{prefix}转移失败，未更改任何箱子。请检查控制台。'
+  transfer-complete-all: '{prefix}已将 {from} 的全部 {count} 个末影箱转移到 {to}。'
+  transfer-complete-one: '{prefix}已将 {count} 个末影箱从 {from} 转移到 {to}。'
+  transfer-displaced-temp: '{prefix}{player} 原有的物品已移入临时存储。'
+  transfer-displaced-override: '{prefix}{player} 原有的物品已被丢弃。'
+
+update:
+  available: '{prefix}有新版本可用：<green>{latest}</green> <gray>（你当前为 {current}）'
+  # {url} 以已做好的可点击组件传入：请保持其在文本位置，切勿放进 <click:...> 属性内。
+  download: '{prefix}{url}'
+  # 该可点击组件的文本。请保持简短，它会与前缀位于同一行。
+  download-label: '点击此处下载更新。'
+
+# 每种"剩余时间"文本的单位标签。只显示两个最大的非零单位，例如 "1d 4h"。
+# {count} 为数字；如果你的语言更适合加前导空格请自行添加。不加颜色代码：
+# 文本会继承其所处消息的颜色。
+duration:
+  year: '{count}年'
+  month: '{count}月'
+  week: '{count}周'
+  day: '{count}天'
+  hour: '{count}小时'
+  minute: '{count}分钟'
+  second: '{count}秒'

@@ -1,0 +1,87 @@
+# GUI 与对话框文本。包含 '<' 的一行视为 MiniMessage，否则视为传统 '&' 颜色代码。
+
+enderchest:
+  # 物品栏窗口标题。{index} = 箱子编号。
+  title: '末影箱'
+  title-numbered: '末影箱 {index}'
+  title-temp: '<red>⚠ <reset>临时存储'
+
+dialog:
+
+  # ===== 列表对话框（每个拥有的箱子对应一个按钮） =====
+  list-title: '你的末影箱'
+  list-body: '选择一个箱子以打开或管理。'
+  # 勾选：点击箱子时打开其管理菜单。未勾选（默认）：直接打开箱子。
+  edit-mode: '编辑模式（点击时管理箱子）'
+  close: '<red>← <reset>关闭'
+  # 每个箱子按钮上的悬停提示。{size} = 格子数量。
+  slots: '{size} 格'
+  # 标记 /ec 打开的箱子。
+  main-tag: '<gold>★'
+  # {time} 例如 "23h 45m"。
+  expires-in: '在 {time} 后到期'
+
+  # ===== 管理员查看列表（/ee view <player> [list]） =====
+  # {player} = 正被查看箱子的所有者。
+  admin-list-title: '{player} 的末影箱'
+  admin-list-body: '选择一个箱子以查看。'
+
+  # ===== 管理员详情对话框（每个箱子，/ee view） =====
+  # 清空需要 enhancedechest.admin.clear 权限，且始终先请求确认。
+  admin-clear: '<red>(管理员) <reset>清空箱子'
+  admin-clear-desc: '永久清空该箱子中的所有物品。'
+  admin-clear-confirm-title: '确定清空该箱子？'
+  admin-clear-confirm-body: '<gray>该箱子中的每件物品都会被<red>永久删除</red>。<newline><gray>此操作无法撤销。'
+  admin-clear-confirm: '<green>✔ <reset>清空箱子'
+
+  # ===== 详情对话框（单个箱子） =====
+  # 标题下居中的文本。{size} = 格子数量。
+  detail-body: '{size} 格'
+  open: '打开'
+  open-desc: '打开该箱子。'
+  set-main: '<gold>★ <reset>设为主箱'
+  set-main-desc: '将该箱子设为 /ec 右键点击末影箱方块时打开的箱子。'
+  unset-main: '<gray>☆ <reset>取消主箱'
+  unset-main-desc: '停止使用该箱子作为主箱，/ec 将再次打开管理菜单。'
+  rename: '重命名'
+  rename-desc: '为该箱子设置自定义显示名称。'
+  choose-icon: '选择图标'
+  choose-icon-desc: '在列表中为该箱子选择一个显示的物品作为图标。'
+  # 仅在 config.yml 中开启 features.sort 时显示。
+  sort: '排序'
+  sort-desc: '合并相同物品为完整组并按照物品类型整理该箱子。'
+  back: '<yellow>← <reset>返回'
+
+  # ===== 重命名对话框 =====
+  rename-body: '为该箱子输入新的显示名称。'
+  name-label: '显示名称'
+  save-name: '<green>✔ <reset>保存'
+  cancel: '<red>← <reset>取消'
+
+  # ===== 图标选择对话框 =====
+  icon-title: '选择图标'
+  # {count} = 匹配物品的数量。
+  icon-body: '{count} 个物品。输入名称并按"搜索"以筛选；滚动以浏览。'
+  icon-search-label: '搜索'
+  icon-search: '搜索'
+  icon-default: '默认'
+  icon-default-desc: '显示该箱子时不带图标。'
+
+  # ===== 导入对话框（/ee import：将旧数据库后端复制到当前后端） =====
+  import-title: '从其他数据库导入'
+  import-body: '<gray>将数据从你的旧数据库移动到 config 中所设置的那个数据库。开始前，新数据库必须为空。'
+  import-sqlite-file-label: 'SQLite 文件'
+  import-host-label: '主机（host 或 host:port）'
+  import-database-label: '数据库名称'
+  import-username-label: '用户名'
+  import-password-label: '密码'
+  # -url 是"文档"按钮打开的地址。如果你自建了翻译页面，可将其指向你自己的译文。
+  import-docs: '文档'
+  import-docs-desc: '阅读切换数据库后端的指南。'
+  import-docs-url: 'https://openvdra.github.io/EnhancedEchest/docs/database/switching-backends'
+  import-run: '<green>✔ <reset>开始导入'
+  import-run-desc: '将源数据库中的每个箱子复制到当前数据库。'
+  # 源类型开关：SQLite（文件）或 Server（MySQL / MariaDB / PostgreSQL）。
+  import-type-sqlite: '类型：<yellow>SQLite'
+  import-type-server: '类型：<yellow>服务器'
+  import-type-desc: '源数据库类型。点击以切换。<newline><gray>SQLite 读取文件；Server 读取 MySQL、MariaDB 或 PostgreSQL 主机（PostgreSQL 使用端口 5432）。'

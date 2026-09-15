@@ -88,7 +88,7 @@ public final class LanguageManager {
      * available for auto-detection even before an operator touches them. Keep in sync with the
      * {@code language/} resource folders; operator-added locales are discovered from disk in addition.
      */
-    private static final List<String> BUNDLED_LOCALES = List.of("en_US", "vi_VN");
+    private static final List<String> BUNDLED_LOCALES = List.of("en_US", "vi_VN", "zh_CN");
 
     private final JavaPlugin plugin;
     private final PluginConfig config;
